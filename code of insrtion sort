@@ -1,0 +1,30 @@
+#include<stdio.h>          //for using printf,scanf lke functions
+#include<stdlib.h>       // may use or may not upto u
+int main()
+{
+  int number_elements,i,j;
+  printf("Enter the number of element you want:");
+  scanf("%d",&number_elements);
+  int *p=(int *)malloc(number_elements*sizeof(int));    // enter the value of elements with malloc
+                                                        //malloc return address that why we use pointer here by typecasting it with in type
+  printf("enter your elements:\n");
+  for(i=0;i<number_elements;i++)  
+  {
+       scanf("%d",(p+i));
+  }
+  for(i=1;i<number_elements;i++)      //code for insertion sort
+  {
+                  int temp=*(p+i);    //first index element
+for(j=i-1;j>=0 && *(p+j)>temp;j--)      // comparng first index element with behind fisrt element number
+{
+        *(p+j+1)=*(p+j);
+}
+  *(p+j+1)=temp;
+  }
+  printf("Your sorted number are:\n");
+  for(i=0;i<number_elements;i++)
+  {
+       printf("%d\n",*(p+i));
+  }
+  free(p);
+}
